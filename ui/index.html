@@ -1,346 +1,63 @@
-<%-- 
-    Document   : index
-    Created on : 7 Oct, 2014, 12:46:42 PM
-    Author     : admin
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html >
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
 <html>
 <head>
-<style type="text/css"> 
-    
-    #cover{ position:fixed; 
-            top:0; 
-            left:0; 
-            background:rgba(0,0,0,0.6); 
-            z-index:5; width:100%;
-            height:100%; display:none; } 
-    #loginScreen { height:380px;
-                   width:380px; 
-                   margin-top: 50;
-                   margin:0 auto;
-                   position:relative;
-                   z-index:10; 
-                   display:none;
-                   background-color:#C7C5C8;
-                   /*background: url(login.png) no-repeat;*/
-                   border:5px solid #cccccc; border-radius:10px; }
-    #loginScreen:target, #loginScreen:target + #cover{ display:block; opacity:2; }
-    .cancel { display:block;
-             position:absolute;
-             top:3px; right:2px;
-             background:#C7C5C8;
-             color:black; height:30px;
-             width:35px; font-size:30px; text-decoration:none;
-             text-align:center; font-weight:bold; } 
-</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Belle &amp; Carrie Rehabilitation Yoga Web Template</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/mobile.css">
+	<script type='text/javascript' src='js/mobile.js'></script>
 </head>
-<body id="top">
-      <%@include  file="connection.jsp" %>
-      <%! String name; %>
- <%@include file="header.jsp" %> 
-<!-- ####################################################################################################### -->
-<div class="wrapper row2">
-  <div id="hpage_featured" class="clear">
-    <!-- ####################################################################################################### -->
-    <div id="featured_slide">
-      <ul>
-          <li><img src="images/4.jpg" height="320" width="450" alt="north block" />
-          <div class="panel-overlay">
-            <h2>Main Entrance North Block</h2>
-           
-          </div>
-        </li>
-        <li><img src="images/3.jpg" height="320" width="450" alt="bbsbec entry" />
-         <div class="panel-overlay">
-            <h2>North Block</h2>
-          
-          </div></li>
-        <li><img src="images/audi.PNG" height="320" width="450" alt="" />
-             <div class="panel-overlay">
-            <h2>Giani Ditt Singh Auditorium</h2>
-           <p></p>
-          </div>
-        </li>
-        <li><img src="images/1.jpg" height="320" width="450" alt="" />
-          <div class="panel-overlay">
-            <h2>South Block</h2>
-            
-          </div>
-        </li>
-      </ul>
-    </div>
-    <!-- ###### -->
-    <div class="intro clear">
-        <div class="welcome clear"><img  src="images/logo.png" height="125" width="125" alt="logo" />
-        <div class="fl_right">
-          <h2>Welcome to Our College</h2>
-          <p style="text-align: justify;">Baba Banda Singh Bahadur Engineering College is a premier institution of higher education. We endeavour to nurture our biggest asset; our students as holistic world citizens driven by human values and wisely equipped to excel on a global stage. We focus on each student, to bring out their full potential and empower them with a winning attitude.
-          Our Campus is well equipped and aesthetically laid out to assist students become an important part of the society. They are trained to identify challenges, convert those to opportunity and apply their technical and human skills to excel. </p>
-        </div>
-      </div>
-      <div class="popular">
-        <h2>Most Popular Links</h2>
-        <ul class="clear">
-          <li><a href="#">&raquo; Notice Board</a></li>
-          <li><a href="#">&raquo; Scholarships</a></li>
-          <li><a href="#">&raquo; Academic Calender</a></li>
-          <li><a href="#">&raquo; Library</a></li>
-          <li><a href="tf.pdf" target="_blank">&raquo; List of Holidays</a></li>
-          <li><a href="#">&raquo; Student Activities</a></li>
-          <li><a href="#">&raquo; Training and Placements</a></li>
-          <li><a href="#">&raquo; Faculty</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- ####################################################################################################### -->
-  </div>
-</div>
-<!-- ####################################################################################################### -->
-<div class="wrapper row3">
-  <div id="container" class="clear">
-    <!-- ####################################################################################################### -->
-    <div id="homepage" class="clear">
-      <!-- ###### -->
-      
-      <div id="content">
-        <div id="top_featured" class="clear">
-          <ul class="clear">
-              <%
-                   String str1="login";
-if(str1.equals(request.getParameter("b1")))
-       {
-    try
-        {
-       rs=sta.executeQuery("select * from student_reg where roll_no='"+request.getParameter("t3")+"'and pwd='"+request.getParameter("t4")+"'");
-                    if(rs.next())
-                                          {
-                        session.setAttribute("uname",rs.getString(2));
-                        session.setAttribute("rollno",rs.getString(1));
-            response.sendRedirect("stu_login.jsp");
-          }
-             else{
-            out.print("Invalid User");
-           
-                     }
-               }
-    catch(Exception ex)
-                       {
-    out.print(ex.getMessage());
-                       }
-       }
-                   %>
-                   <%
-                   String str2="login";
-if(str2.equals(request.getParameter("b2")))
-       {
-    try
-        {
-       rs=sta.executeQuery("select * from tchr_login where email='"+request.getParameter("t1")+"'and pwd='"+request.getParameter("t2")+"'");
-                    if(rs.next())
-                                          {
-                        session.setAttribute("tname",rs.getString(2));
-                        session.setAttribute("email",rs.getString(1));
-            response.sendRedirect("tchr_login.jsp");
-          }
-             else{
-            out.print("Invalid User");
-                     }
-               }
-    catch(Exception ex)
-                       {
-    out.print(ex.getMessage());
-                       }
-       }
-                       
-   %>
-              <li>
-                <h2>Staff Login</h2>
-             <center id="pl">
-              <form name="f1" action="" method="post" >
-                  <input type="text" name="t1" placeholder="Enter Emailid" size="35" style="background-image:images/bb1.jpg"></br></br>
-                   <input type="password" name="t2" placeholder="Password" size="35"></br></br>
-                   <input type="submit" value="login" src="images/l1.png" height="70" width="90" name="b2" />
-              </form><a href=""><p style="background-image:images/bb1.jpg">Forget Password? Click here</p></a></center>
-                <img src="images/shadow.gif" alt="" />
-          </li>
-              <li class="last" >
-              <h2>Student Login</h2>
-              <center id="pl">
-               <form name="f2" action="" method="post">
-                  <input type="text" name="t3" placeholder="Enter Roll No." size="35"></br></br>
-                   <input type="password" name="t4" placeholder="Password" size="35"></br></br>
-                   <input type="submit" src="images/l1.png" height="70" width="90" name="b1" value="login"/>
-               </form><a href=""><p style="background-image:images/bb1.jpg">Forget Password? Click here</p></a>
-           </center>   <img src="images/shadow.gif" alt="" />
-            </li>
-           
-          </ul>
-        </div>
-        <div id="latestnews">
-          <h2>Latest News &amp; Events</h2>
-                       <marquee behavior="scroll" direction="up" scrollamount="2"> 
-
-          <ul>
-              <%
-             
-              try
-            {
-rs=sta.executeQuery("select * from news ");
-        while(rs.next())
-                       {
-     
-
-%>
-            <li>
-              <p><strong><%=rs.getString(2)%></strong><br />
-                <%=rs.getString(3)%> 
-                <p class="readmore"><%=rs.getString(4)%></p>
-            </li>
-            <%
-                      }} catch(Exception ex)
-                                       {   
-            }
-            %>          
-          </ul>
-            </marquee>
-        </div>
-        <div id="quicklinks">
-          <h2>Quick Links</h2>
-          <ul>
-            <li>
-              <p><a href="#">Registration <img src="images/reg.jpg" height="80" width="200" alt="registration" /></a></p>
-            </li>
-            <li>
-              <p><a href="#">Order a Prospectus <img src="images/pros.jpg" height="80" width="200" alt="prospectus" /></a></p>
-            </li>
-            <li class="last">
-              <p><a href="#loginScreen" >Support Us <img src="images/sus.jpg" height="80" width="200" alt="support us" /></a></p>
-            </li>
-          </ul>
-         
-        </div>
-        </div>
-     
-      <!-- ###### -->
-      <div id="column">
-        <div class="holder">
-          <h2>Take The Virtual Tour</h2>
-          <!-- Begin Flash Here - This is the correct method for W3C validation -->
-          <object type="application/x-shockwave-flash" data="https://www.youtube.com/v/vxAU88LxLis?version=3&amp;hl=en_US&amp;fs=1&amp;rel=0" width="300" height="250">
-              <param name="movie" value="https://www.youtube.com/v/vxAU88LxLis?version=3&amp;hl=en_US&amp;fs=1&amp;rel=0" />
-            <param name="wmode" value="opaque" />
-            <param name="quality" value="high" />
-            <param name="bgcolor" value="#E9E9E9" />
-            <param name="allowfullscreen" value="false" />
-            <param name="allowscriptaccess" value="never" />
-          </object>
-          <!-- End Flash Here -->
-       
-        </div>
-        <div class="holder last">
-          <h2>Staff Representatives</h2>
-          <ul class="staffmembers">
-              <li class="clear"><img class="imgl" src="images/pp1.jpg" height="80" width="80"  alt="" />
-              <div class="fl_left">
-                <p><strong>Dr. G. S. Lamba</strong></p>
-                <p>Principal</p>
-                <p><a href="#">Read more &raquo;</a></p>
-              </div>
-            </li>
-            <li class="clear"><img class="imgl" src="images/dean.PNG" height="80" width="80" alt="" />
-              <div class="fl_left">
-                <p><strong>Prof. Lakhwinder Singh</strong></p>
-                <p>Dean Academics</p>
-                <p><a href="#">Read more &raquo;</a></p>
-              </div>
-            </li>
-            <li class="clear"><img class="imgl" src="images/bsbhullar.jpg" height="80" width="80" alt="" />
-              <div class="fl_left">
-                <p><strong>Er. B. S. Bhullar</strong></p>
-                <p>Associate Prof. & H.O.D. T&P Cell</p>
-                <p><a href="#">Read more &raquo;</a></p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- ###### -->
-    </div>
-    <!-- ####################################################################################################### -->
-  </div>
-</div>
-          <div id="loginScreen" style="color:#510000;font-family:times new roman;"><center><h1>Rate Our Website</h1>
-                  <form action="" method="post">
-                      1<input type="radio" name="r1" value="1"/>
-                      2<input type="radio" name="r1" value="2"/>
-                      3<input type="radio" name="r1" value="3"/>
-                  4<input type="radio" name="r1" value="4"/>
-                  5<input type="radio" name="r1" value="5"/><br><br>
-                  <input type="submit" name="s1" value="Rate" height="70" width="90"/>
-              </form>
-                  <%
-                  String st="Rate";
-                  if(st.equals(request.getParameter("s1")))
-       {
-    try
-        {
-        sta.executeUpdate("insert into rate (rating) values ("+request.getParameter("r1")+")");
-    }
-    catch(Exception ex)
-                       {
-      out.print(ex.getMessage())  ;
-    } }
-                  %>
-                  
-              <h1>Highest Rate</h1>
-              <%
-               try
-        {
-       rs=sta.executeQuery("select max(rating) from rate");
-       if(rs.next()){
-           int i;
-       int v=Integer.parseInt(rs.getString(1));  
-   
-        for(i=1;i<=v;i++)
-                     {%>
-                     
-                    <img src="images/star.png" width="50" height="50" alt="star"/>
-
-      <%     
-       }
-          
-          }
-    }
-    catch(Exception ex)
-                       {
-      out.print(ex.getMessage())  ;
-    }
-    %>
-            </center>
-              <a href="index.jsp" class="cancel">&times;</a>
-          </div>
-          <div id="cover" > 
-          </div> 
- 
-<!-- ####################################################################################################### -->
- <%@include file="footer.jsp" %> 
-<script src="jsphp/main.js"></script><script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<body>
+	<div id="header">
+		<h1><a href="index.html">Belle &amp; Carrie <span>Rehabilitation Yoga</span></a></h1>
+		<ul id="navigation">
+			<li class="current">
+				<a href="index.html">Home</a>
+			</li>
+			<li>
+				<a href="about.html">About</a>
+			</li>
+			<li>
+				<a href="classes.html">Classes</a>
+				<ul>
+					<li>
+						<a href="instructors.html">Instructors</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="contact.html">Contact</a>
+			</li>
+			<li>
+				<a href="blog.html">Blog</a>
+			</li>
+		</ul>
+	</div>
+	<div id="body">
+		<div id="tagline">
+			<h1>Yoga</h1>
+			<p>
+				For Better Health &amp; Flexibility
+			</p>
+		</div>
+		<img src="images/lady-in-yoga.jpg" alt="lady doing yoga" class="figure">
+	</div>
+	<div id="footer">
+		<div>
+			<span>123 St. City Location, Country | 987654321</span>
+			<p>
+				&copy; 2023 by Belle &amp; Carrie Rehabilitation Yoga. All rights reserved.
+			</p>
+		</div>
+		<div id="connect">
+			<a href="https://freewebsitetemplates.com/go/facebook/" id="facebook" target="_blank">Facebook</a>
+			<a href="https://freewebsitetemplates.com/go/twitter/" id="twitter" target="_blank">Twitter</a>
+			<a href="https://freewebsitetemplates.com/go/googleplus/" id="googleplus" target="_blank">Google&#43;</a>
+			<a href="https://freewebsitetemplates.com/go/pinterest/" id="pinterest" target="_blank">Pinterest</a>
+		</div>
+	</div>
 </body>
-
- 
 </html>
